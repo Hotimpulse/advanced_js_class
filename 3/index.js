@@ -1,5 +1,6 @@
 "use strict";
 
+const reviewsKey = 'reviews';
 const form = document.getElementById('productForm');
 let productNameInput = document.getElementById('productName');
 let productTextInput = document.getElementById('productText');
@@ -22,7 +23,7 @@ btn.addEventListener('click', (e) => {
                 productText: productText,
             }
             reviewArray.push(review);
-            localStorage.setItem('reviews', JSON.stringify(reviewArray));
+            localStorage.setItem(reviewsKey, JSON.stringify(reviewArray));
             error.textContent = `You have added a review, congrats!`;
             productNameInput.value = '';
             productTextInput.value = '';

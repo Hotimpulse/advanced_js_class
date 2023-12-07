@@ -1,7 +1,8 @@
 "use strict";
 
+const reviewsKey = 'reviews';
 const productList = document.getElementById('review-wrapper');
-const jsonInStorage = localStorage.getItem('reviews');
+const jsonInStorage = localStorage.getItem(reviewsKey);
 const reviewsArray = JSON.parse(jsonInStorage) || [];
 
 function runApp() {
@@ -50,7 +51,7 @@ function createItems(review) {
         if (index !== -1) {
             reviewsArray.splice(index, 1);
 
-            localStorage.setItem('reviews', JSON.stringify(reviewsArray));
+            localStorage.setItem(reviewsKey, JSON.stringify(reviewsArray));
 
             productCard.remove();
         }
