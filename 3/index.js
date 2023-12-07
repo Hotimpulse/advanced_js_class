@@ -6,6 +6,7 @@ let productTextInput = document.getElementById('productText');
 const btn = document.getElementById('product-btn');
 const wrapper = document.getElementById('wrapper');
 let error = document.createElement('p');
+error.setAttribute('id', 'error');
 wrapper.append(error);
 const reviewArray = [];
 
@@ -14,7 +15,7 @@ btn.addEventListener('click', (e) => {
     try {
         const productName = productNameInput.value.trim();
         const productText = productTextInput.value.trim();
-        if ((productName !== '') || (productText !== '')) {
+        if ((productName !== '') && (productText !== '')) {
             error.textContent = '';
             let review = {
                 productName: productName,
@@ -22,6 +23,9 @@ btn.addEventListener('click', (e) => {
             }
             reviewArray.push(review);
             localStorage.setItem('reviews', JSON.stringify(reviewArray));
+            error.textContent = `You have added a review, congrats!`;
+            productNameInput.value = '';
+            productTextInput.value = '';
         } else {
             error.textContent = `Error! You need to fill in both fields.`
             throw new Error(`You need some text in your inputs!`)

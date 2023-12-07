@@ -4,9 +4,27 @@ const productList = document.getElementById('review-wrapper');
 const jsonInStorage = localStorage.getItem('reviews');
 const reviewsArray = JSON.parse(jsonInStorage) || [];
 
-reviewsArray.forEach(item => {
-    createItems(item);
-})
+function runApp() {
+    if (reviewsArray.length === 0) {
+        let message = document.createElement('p');
+        message.setAttribute('id', 'message');
+        let link = document.createElement('button');
+        link.textContent = 'Main';
+        message.textContent = `Create a review first! Navigate to`;
+        message.appendChild(link)
+        document.body.append(message);
+        link.addEventListener('click', () => {
+            navigateToMain();
+        })
+    } else {
+        reviewsArray.forEach(item => {
+            createItems(item);
+        })
+    }
+}
+
+runApp();
+
 
 function createItems(review) {
     const productCard = document.createElement('div');
@@ -40,6 +58,10 @@ function createItems(review) {
         if (reviewsArray.every(item => item.productName !== review.productName)) {
             productCard.remove();
         }
+
+        if (reviewsArray.length === 0) {
+            runApp();
+        }
     })
 
     productCard.append(productNameEl);
@@ -49,4 +71,8 @@ function createItems(review) {
 
     productList.append(productCard);
 
+}
+
+function navigateToMain() {
+    window.location.href = './main.html';
 }
