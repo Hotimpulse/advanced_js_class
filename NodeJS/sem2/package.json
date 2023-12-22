@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "A JavaScript library that generates random dummy user data.",
   "main": "dummyDataMaker.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hotimpulse/advanced_js_class/tree/main/NodeJS/sem2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["dummy data", "random data", "user data"],
+  "keywords": ["dummy data", "random data", "user data", "fake data generator"],
   "author": "hotimpulse",
   "license": "ISC"
 }
